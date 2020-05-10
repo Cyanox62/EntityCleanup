@@ -7,8 +7,8 @@
 
 		internal static void Reload()
 		{
-			itemCleanupInterval = Plugin.Config.GetInt("ec_item_cleanup_interval", 10);
-			ragdollCleanupInterval = Plugin.Config.GetInt("ec_ragdoll_cleanup_interval", 10);
+			itemCleanupInterval = Plugin.Config.GetInt("ec_item_cleanup_interval", 300);
+			ragdollCleanupInterval = Plugin.Config.GetInt("ec_ragdoll_cleanup_interval", 300);
 		}
 	}
 }
