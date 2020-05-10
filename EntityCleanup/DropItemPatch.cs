@@ -14,7 +14,7 @@ namespace EntityCleanup
 			for (byte index = 0; index < (byte)3; ++index)
 			{
 				if (__instance._ab.GetAmmo((int)index) != 0)
-					EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleDroppedItem(__instance.SetPickup(__instance._ab.types[(int)index].inventoryID, (float)__instance._ab.GetAmmo((int)index), __instance.transform.position, __instance.camera.transform.rotation, 0, 0, 0)));
+					EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleDroppedItem(__instance.SetPickup(__instance._ab.types[(int)index].inventoryID, (float)__instance._ab.GetAmmo((int)index), __instance.transform.position, __instance.camera.transform.rotation, 0, 0, 0))));
 			}
 			__instance.items.Clear();
 			__instance._ab.Networkamount = "0:0:0";
