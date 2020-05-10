@@ -19,14 +19,6 @@ namespace EntityCleanup
 			coroutines.Clear();
 		}
 
-		public void OnPlayerDie(ref PlayerDeathEvent ev)
-		{
-			foreach (var item in ev.Player.inventory.items)
-			{
-				
-			}
-		}
-
 		public void OnDroppedItem(ItemDroppedEvent ev)
 		{
 			coroutines.Add(Timing.RunCoroutine(HandleDroppedItem(ev.Item)));

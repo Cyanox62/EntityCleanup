@@ -16,7 +16,6 @@ namespace EntityCleanup
             Events.ItemDroppedEvent += ev.OnDroppedItem;
             Events.WaitingForPlayersEvent += ev.OnWaitingForPlayers;
             Events.RoundRestartEvent += ev.OnRoundRestart;
-            Events.PlayerDeathEvent += ev.OnPlayerDie;
         }
 
         public override void OnDisable() { }
