@@ -9,6 +9,7 @@ namespace EntityCleanup
 	{
 		public static IEnumerator<float> HandleDroppedItem(Pickup item)
 		{
+			if (Config.ignoreItems.Contains((int)item.ItemId)) yield break;
 			yield return Timing.WaitForSeconds(Config.itemCleanupInterval);
 			if (item != null) item.Delete();
 		}
