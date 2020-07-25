@@ -9,14 +9,14 @@ namespace EntityCleanup
 	{
 		public static IEnumerator<float> HandleDroppedItem(Pickup item)
 		{
-			if (Config.ignoreItems.Contains((int)item.ItemId)) yield break;
-			yield return Timing.WaitForSeconds(Config.itemCleanupInterval);
+			if (EntityCleanup.instance.Config.IgnoreItems.Contains((int)item.ItemId)) yield break;
+			yield return Timing.WaitForSeconds(EntityCleanup.instance.Config.ItemCleanupInterval);
 			if (item != null) item.Delete();
 		}
 
 		public static IEnumerator<float> HandleRagdoll(GameObject ragdoll)
 		{
-			yield return Timing.WaitForSeconds(Config.ragdollCleanupInterval);
+			yield return Timing.WaitForSeconds(EntityCleanup.instance.Config.RagdollCleanupInterval);
 			if (ragdoll != null) NetworkServer.Destroy(ragdoll);
 		}
 	}

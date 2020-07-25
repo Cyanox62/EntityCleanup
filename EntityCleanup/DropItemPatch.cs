@@ -1,6 +1,6 @@
-﻿using Harmony;
+﻿using Exiled.API.Features;
+using HarmonyLib;
 using MEC;
-using Mirror;
 
 namespace EntityCleanup
 {
@@ -9,15 +9,13 @@ namespace EntityCleanup
 	{
 		public static bool Prefix(Inventory __instance)
 		{
-			foreach (Inventory.SyncItemInfo syncItemInfo in (SyncList<Inventory.SyncItemInfo>)__instance.items)
-				EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleDroppedItem(__instance.SetPickup(syncItemInfo.id, syncItemInfo.durability, __instance.transform.position, __instance.camera.transform.rotation, syncItemInfo.modSight, syncItemInfo.modBarrel, syncItemInfo.modOther))));
-			for (byte index = 0; index < (byte)3; ++index)
+			Player player = Player.Get(__instance.gameObject);
+			foreach (global::Inventory.SyncItemInfo syncItemInfo in __instance.items)
 			{
-				if (__instance._ab.GetAmmo((int)index) != 0)
-					EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleDroppedItem(__instance.SetPickup(__instance._ab.types[(int)index].inventoryID, (float)__instance._ab.GetAmmo((int)index), __instance.transform.position, __instance.camera.transform.rotation, 0, 0, 0))));
+				EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleDroppedItem(__instance.SetPickup(syncItemInfo.id, syncItemInfo.durability, player.Position, __instance.camera.transform.rotation, syncItemInfo.modSight, syncItemInfo.modBarrel, syncItemInfo.modOther))));
 			}
+			__instance._ab.DropAll();
 			__instance.items.Clear();
-			__instance._ab.Networkamount = "0:0:0";
 
 			return false;
 		}

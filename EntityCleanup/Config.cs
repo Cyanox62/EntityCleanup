@@ -1,21 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Exiled.API.Interfaces;
+using System.Collections.Generic;
 
 namespace EntityCleanup
 {
-	public static class Config
+	public class Config : IConfig
 	{
-		internal static List<int> ignoreItems;
+		public bool IsEnabled { get; set; } = true;
 
-		internal static int itemCleanupInterval;
-		internal static int ragdollCleanupInterval;
+		public List<int> IgnoreItems = new List<int>();
 
-		internal static void Reload()
-		{
-			ignoreItems = Plugin.Config.GetIntList("ev_ignored_items");
-			if (ignoreItems == null || ignoreItems.Count == 0) ignoreItems = new List<int>();
-
-			itemCleanupInterval = Plugin.Config.GetInt("ec_item_cleanup_interval", 300);
-			ragdollCleanupInterval = Plugin.Config.GetInt("ec_ragdoll_cleanup_interval", 300);
-		}
+		public int ItemCleanupInterval { get; set; } = 300;
+		public int RagdollCleanupInterval { get; set; } = 300;
 	}
 }
