@@ -12,6 +12,8 @@ namespace EntityCleanup
 
         public override void OnEnabled()
         {
+            if (!Config.IsEnabled) return;
+
             instance = this;
 
             hInstance = new Harmony("cyanox.entitycleanup");
