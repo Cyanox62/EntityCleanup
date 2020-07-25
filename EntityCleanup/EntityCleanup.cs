@@ -21,12 +21,14 @@ namespace EntityCleanup
 
             ev = new EventHandlers();
 
+            Exiled.Events.Handlers.Server.WaitingForPlayers += ev.OnWaitingForPlayers;
             Exiled.Events.Handlers.Player.ItemDropped += ev.OnDroppedItem;
             Exiled.Events.Handlers.Server.RestartingRound += ev.OnRoundRestart;
         }
 
         public override void OnDisabled()
         {
+            Exiled.Events.Handlers.Server.WaitingForPlayers -= ev.OnWaitingForPlayers;
             Exiled.Events.Handlers.Player.ItemDropped -= ev.OnDroppedItem;
             Exiled.Events.Handlers.Server.RestartingRound -= ev.OnRoundRestart;
 

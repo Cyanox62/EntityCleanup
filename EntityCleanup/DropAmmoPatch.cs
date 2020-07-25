@@ -9,6 +9,8 @@ namespace EntityCleanup
 	{
 		public static bool Prefix(AmmoBox __instance)
 		{
+			if (!EventHandlers.canDrop) return false;
+
 			Player player = Player.Get(__instance.gameObject);
 			for (int i = 0; i < __instance.amount.Count; i++)
 			{
