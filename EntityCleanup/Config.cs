@@ -7,7 +7,7 @@ namespace EntityCleanup
 	{
 		public bool IsEnabled { get; set; } = true;
 
-		public List<int> IgnoreItems = new List<int>();
+		public List<int> IgnoreItems { get; set; } = new List<int>();
 
 		public int ItemCleanupInterval { get; set; } = 300;
 		public int RagdollCleanupInterval { get; set; } = 300;
