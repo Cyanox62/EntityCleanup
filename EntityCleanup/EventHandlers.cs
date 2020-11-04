@@ -11,7 +11,7 @@ namespace EntityCleanup
 
 		public void OnRoundRestart()
 		{
-			Timing.KillCoroutines(coroutines);
+			Timing.KillCoroutines(coroutines.ToArray());
 			coroutines.Clear();
 			canDrop = false;
 		}
