@@ -19,6 +19,7 @@ namespace EntityCleanup
 
 		public static IEnumerator<float> HandleRagdoll(GameObject ragdoll)
 		{
+			Exiled.API.Features.Log.Warn("handling ragdoll");
 			yield return Timing.WaitForSeconds(EntityCleanup.instance.Config.RagdollCleanupInterval);
 			if (ragdoll != null) NetworkServer.Destroy(ragdoll);
 		}

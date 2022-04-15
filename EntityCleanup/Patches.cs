@@ -10,27 +10,6 @@ using UnityEngine;
 
 namespace EntityCleanup
 {
-	[HarmonyPatch(typeof(Ragdoll), nameof(Ragdoll.ServerSpawnRagdoll))]
-	class Patches
-	{
-		public static bool Prefix(global::ReferenceHub hub, PlayerStatsSystem.DamageHandlerBase handler)
-		{
-			if (!NetworkServer.active || hub == null)
-			{
-				return false;
-			}
-			GameObject model_ragdoll = hub.characterClassManager.CurRole.model_ragdoll;
-			if (model_ragdoll == null || !GameObject.Instantiate<GameObject>(model_ragdoll).TryGetComponent<global::Ragdoll>(out Ragdoll ragdoll))
-			{
-				return false;
-			}
-			ragdoll.NetworkInfo = new global::RagdollInfo(hub, handler, model_ragdoll.transform.localPosition, model_ragdoll.transform.localRotation);
-			NetworkServer.Spawn(ragdoll.gameObject);
-			EventHandlers.coroutines.Add(Timing.RunCoroutine(EventHandlers.HandleRagdoll(ragdoll.gameObject)));
-			return false;
-		}
-	}
-
 	[HarmonyPatch(typeof(InventoryExtensions), nameof(InventoryExtensions.ServerCreatePickup))]
 	class PickupPatch
 	{

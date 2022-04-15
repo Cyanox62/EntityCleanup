@@ -22,11 +22,13 @@ namespace EntityCleanup
             ev = new EventHandlers();
 
             Exiled.Events.Handlers.Server.RestartingRound += ev.OnRoundRestart;
+            Exiled.Events.Handlers.Player.SpawningRagdoll += ev.OnSpawningRagdoll;
         }
 
         public override void OnDisabled()
         {
             Exiled.Events.Handlers.Server.RestartingRound -= ev.OnRoundRestart;
+            Exiled.Events.Handlers.Player.SpawningRagdoll -= ev.OnSpawningRagdoll;
 
             hInstance.UnpatchAll();
 

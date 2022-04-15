@@ -1,4 +1,5 @@
-﻿using MEC;
+﻿using Exiled.Events.EventArgs;
+using MEC;
 using System.Collections.Generic;
 
 namespace EntityCleanup
@@ -11,6 +12,12 @@ namespace EntityCleanup
 		{
 			Timing.KillCoroutines(coroutines.ToArray());
 			coroutines.Clear();
+		}
+
+		internal void OnSpawningRagdoll(SpawningRagdollEventArgs ev)
+		{
+			ev.IsAllowed = false;
+			coroutines.Add(Timing.RunCoroutine(HandleRagdoll(new Exiled.API.Features.Ragdoll(ev.Info, true).GameObject)));
 		}
 	}
 }
