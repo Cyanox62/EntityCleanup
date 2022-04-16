@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace EntityCleanup
 {
-	[HarmonyPatch(typeof(InventoryExtensions), nameof(InventoryExtensions.ServerCreatePickup))]
+	/*[HarmonyPatch(typeof(InventoryExtensions), nameof(InventoryExtensions.ServerCreatePickup))]
 	class PickupPatch
 	{
 		public static bool Prefix(ref ItemPickupBase __result, Inventory inv, ItemBase item, PickupSyncInfo psi, bool spawn = true)
@@ -30,5 +30,5 @@ namespace EntityCleanup
 			__result = itemPickupBase;
 			return false;
 		}
-	}
+	}*/
 }

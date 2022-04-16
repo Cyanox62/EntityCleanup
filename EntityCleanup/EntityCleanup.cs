@@ -6,7 +6,7 @@ namespace EntityCleanup
     public class EntityCleanup : Plugin<Config>
     {
         internal static EntityCleanup instance;
-        private Harmony hInstance;
+        //private Harmony hInstance;
 
         private EventHandlers ev;
 
@@ -16,8 +16,8 @@ namespace EntityCleanup
 
             instance = this;
 
-            hInstance = new Harmony("cyanox.entitycleanup");
-            hInstance.PatchAll();
+            //hInstance = new Harmony("cyanox.entitycleanup");
+            //hInstance.PatchAll();
 
             ev = new EventHandlers();
 
@@ -30,7 +30,7 @@ namespace EntityCleanup
             Exiled.Events.Handlers.Server.RestartingRound -= ev.OnRoundRestart;
             Exiled.Events.Handlers.Player.SpawningRagdoll -= ev.OnSpawningRagdoll;
 
-            hInstance.UnpatchAll();
+            //hInstance.UnpatchAll();
 
             ev = null;
         }
