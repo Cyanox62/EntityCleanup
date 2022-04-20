@@ -19,7 +19,7 @@ namespace EntityCleanup
             }
             foreach (Exiled.API.Features.Ragdoll p in delRag)
             {
-                Log.Info("Removing ragdoll: " + ClosestRoom(p.Position).Zone);
+                //Log.Info("Removing ragdoll: " + ClosestRoom(p.Position).Zone);
                 p.Delete();
             }
             delRag.Clear();
@@ -31,7 +31,7 @@ namespace EntityCleanup
             }
             foreach (Pickup p in del)
             {
-                Log.Info(p.Type + " - " + ClosestRoom(p.Position).Zone);
+                //Log.Info(p.Type + " - " + ClosestRoom(p.Position).Zone);
                 p.Destroy();
             }
             del.Clear();
@@ -47,7 +47,7 @@ namespace EntityCleanup
             }
             foreach (Exiled.API.Features.Ragdoll p in delRag)
             {
-                Log.Info("Removing ragdoll: " + ClosestRoom(p.Position).Zone);
+                //Log.Info("Removing ragdoll: " + ClosestRoom(p.Position).Zone);
                 p.Delete();
             }
             delRag.Clear();
@@ -59,7 +59,7 @@ namespace EntityCleanup
             }
             foreach (Pickup p in del)
             {
-                Log.Info(p.Type + " - " + ClosestRoom(p.Position).Zone);
+                //Log.Info(p.Type + " - " + ClosestRoom(p.Position).Zone);
                 p.Destroy();
             }
             del.Clear();
