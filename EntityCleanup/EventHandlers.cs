@@ -3,6 +3,7 @@ using Exiled.API.Features.Items;
 using Exiled.Events.EventArgs;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace EntityCleanup
 {
@@ -15,7 +16,17 @@ namespace EntityCleanup
             List<Exiled.API.Features.Ragdoll> delRag = new List<Exiled.API.Features.Ragdoll>();
             foreach (Exiled.API.Features.Ragdoll p in Map.Ragdolls)
             {
-                if (ClosestRoom(p.Position).Zone != Exiled.API.Enums.ZoneType.Surface && EntityCleanup.instance.Config.cleanRagdolls) delRag.Add(p);
+                Vector3 pos;
+                try
+                {
+                    pos = p.Position;
+                }
+                catch
+                {
+                    continue;
+                }
+                if (pos == null) continue;
+                if (ClosestRoom(pos).Zone != Exiled.API.Enums.ZoneType.Surface && EntityCleanup.instance.Config.cleanRagdolls) delRag.Add(p);
             }
             foreach (Exiled.API.Features.Ragdoll p in delRag)
             {
@@ -43,7 +54,17 @@ namespace EntityCleanup
             List<Exiled.API.Features.Ragdoll> delRag = new List<Exiled.API.Features.Ragdoll>();
             foreach (Exiled.API.Features.Ragdoll p in Map.Ragdolls)
             {
-                if (ClosestRoom(p.Position).Zone == Exiled.API.Enums.ZoneType.LightContainment && EntityCleanup.instance.Config.cleanRagdolls) delRag.Add(p);
+                Vector3 pos;
+                try
+                {
+                    pos = p.Position;
+                }
+                catch
+                {
+                    continue;
+                }
+                if (pos == null) continue;
+                if (ClosestRoom(pos).Zone == Exiled.API.Enums.ZoneType.LightContainment && EntityCleanup.instance.Config.cleanRagdolls) delRag.Add(p);
             }
             foreach (Exiled.API.Features.Ragdoll p in delRag)
             {
