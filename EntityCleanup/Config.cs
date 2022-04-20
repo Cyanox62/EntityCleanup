@@ -1,15 +1,13 @@
 ﻿using Exiled.API.Interfaces;
-using System.Collections.Generic;
 
 namespace EntityCleanup
 {
-	public class Config : IConfig
-	{
-		public bool IsEnabled { get; set; } = true;
-
-		//public List<int> CleanupItems { get; set; } = new List<int>();
-
-		//public int ItemCleanupInterval { get; set; } = 420;
-		public int RagdollCleanupInterval { get; set; } = 120;
-	}
+    public class Config : IConfig
+    {
+        public bool IsEnabled { get; set; } = true;
+        public bool cleanRagdolls { get; set; } = true;
+        public bool cleanPickups { get; set; } = true;
+        public bool cleanupAfterNuke { get; set; } = true;
+        public bool cleanupAfterDecont { get; set; } = true;
+    }
 }
