@@ -1,5 +1,4 @@
 ﻿using Exiled.API.Features;
-using HarmonyLib;
 
 namespace EntityCleanup
 {
@@ -21,14 +20,14 @@ namespace EntityCleanup
 
             ev = new EventHandlers();
 
-            Exiled.Events.Handlers.Server.RestartingRound += ev.OnRoundRestart;
-            Exiled.Events.Handlers.Player.SpawningRagdoll += ev.OnSpawningRagdoll;
+            Exiled.Events.Handlers.Warhead.Detonated += ev.OnNuke;
+            Exiled.Events.Handlers.Map.Decontaminating += ev.OnDecontamination;
         }
 
         public override void OnDisabled()
         {
-            Exiled.Events.Handlers.Server.RestartingRound -= ev.OnRoundRestart;
-            Exiled.Events.Handlers.Player.SpawningRagdoll -= ev.OnSpawningRagdoll;
+            Exiled.Events.Handlers.Warhead.Detonated -= ev.OnNuke;
+            Exiled.Events.Handlers.Map.Decontaminating -= ev.OnDecontamination;
 
             //hInstance.UnpatchAll();
 
